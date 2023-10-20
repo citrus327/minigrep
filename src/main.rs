@@ -2,13 +2,8 @@
 pub mod engine;
 pub mod search_param;
 pub mod search_result;
-use std::{error::Error, process};
-use termion::color::{self};
 
-pub fn die(e: &dyn Error) -> ! {
-    eprintln!("{}{}{}", color::Fg(color::Red), e, color::Fg(color::Reset));
-    process::exit(1)
-}
+mod utils;
 
 fn main() {
     let search_param = search_param::SearchParam::from_args();

@@ -1,6 +1,6 @@
 use std::fs;
 
-use crate::{search_param::SearchParam, search_result::SearchResult};
+use crate::{search_param::SearchParam, search_result::SearchResult, utils};
 
 #[derive(Debug)]
 pub struct Engine<'a> {
@@ -17,7 +17,7 @@ impl<'a> Engine<'a> {
     }
     fn read(&self, file_path: &str) -> String {
         let content = fs::read_to_string(file_path);
-        let content = content.unwrap_or_else(|e| crate::die(&e));
+        let content = content.unwrap_or_else(|e| utils::die(&e));
         content
     }
     pub fn search(&mut self) {
