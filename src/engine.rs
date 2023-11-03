@@ -23,10 +23,9 @@ impl<'a> Engine<'a> {
     pub fn search(&mut self) -> &Self {
         let content = self.read(&self.search_param.file_path);
 
-        let mut i = 0;
-        for (_, line) in content.lines().enumerate() {
+        for (i, line) in content.lines().enumerate() {
             if line.contains(self.search_param.search_string.as_str()) {
-                let result: SearchResult = SearchResult::from(i, line.to_string());
+                let result: SearchResult = SearchResult::from(i:i8, line.to_string());
                 self.results.push(result)
             }
 

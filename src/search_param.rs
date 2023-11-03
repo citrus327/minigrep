@@ -35,14 +35,14 @@ impl SearchParam {
                 eprintln!("Empty search_string, using default");
                 String::new()
             },
-            |s| s.clone(),
+            std::clone::Clone::clone,
         );
         let file_path = rest.get(1).map_or_else(
             || {
                 eprintln!("Empty file_path, using default");
                 default_file_path.to_string()
             },
-            |s| s.clone(),
+            std::clone::Clone::clone,
         );
 
         Self {
