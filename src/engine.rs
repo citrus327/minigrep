@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, i8};
 
 use crate::{search_param::SearchParam, search_result::SearchResult, utils};
 
@@ -25,11 +25,9 @@ impl<'a> Engine<'a> {
 
         for (i, line) in content.lines().enumerate() {
             if line.contains(self.search_param.search_string.as_str()) {
-                let result: SearchResult = SearchResult::from(i:i8, line.to_string());
+                let result: SearchResult = SearchResult::from(i as i8, line.to_string());
                 self.results.push(result)
             }
-
-            i += 1;
         }
         self
     }

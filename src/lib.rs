@@ -14,26 +14,20 @@ mod tests {
 
         #[test]
         fn test_from_args() {
-            let test_args = vec!["program_name", "--option", "value"];
+            // let test_args = vec!["program_name", "--option", "value"];
 
             // Set the test arguments for the duration of this test
-            env::args().collect::<Vec<String>>();
-            env::args_mut()
-                .take(1)
-                .chain(test_args.iter().map(|s| s.to_string()));
+            // env::args().collect::<Vec<String>>();
+            // env::args_mut()
+            //     .take(1)
+            //     .chain(test_args.iter().map(|s| s.to_string()));
+
+            env::set_var("ARGS", "argument1 argument2");
 
             let search_param = SearchParam::from_args();
 
             assert_eq!(search_param.file_path, "123");
             assert_eq!(search_param.search_string, "123");
-        }
-    }
-
-    mod engine_tests {
-        use crate::engine;
-
-        fn test_from() {
-            // engine::Engine::from(search_param)
         }
     }
 

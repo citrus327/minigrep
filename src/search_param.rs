@@ -22,6 +22,16 @@ impl SearchParam {
     pub fn from_args() -> Self {
         let args: Vec<String> = env::args().collect();
 
+        if args.len() > 1 {
+            // Do something with the arguments
+            println!("Arguments:");
+            for arg in args.iter().skip(1) {
+                println!("{}", arg);
+            }
+        } else {
+            println!("No arguments passed");
+        }
+
         if args.len() < 3 {
             eprintln!("{}Insuffcient arguments", color::Fg(ERROR_COLOR));
             process::exit(1)
